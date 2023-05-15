@@ -1,15 +1,45 @@
 const div = document.createElement('div');
 const grid = document.getElementById('grid');
+const gridItem = document.getElementsByClassName('grid-item');
+
+let sizeSlide = document.getElementById('myRange');
 const blackBtn = document.getElementById('blackBtn');
 const rainbowBtn = document.getElementById('rainbowBtn');
 const eraseBtn = document.getElementById('eraseBtn');
 const defaultSize = 16;
 const resetBtn = document.getElementById('resetBtn');
 
-let currentSize = 0;
 let blackColor = true;
 let rainbow = false;
 let eraser = false;
+
+
+
+/*size*/
+sizeSlide.addEventListener('change', changeGrid);
+function getGridSize(){
+  let sizeSlide = document.getElementById('myRange')
+  let currentSize = sizeSlide.value;
+  return currentSize;
+}
+
+function changeGrid() {
+  grid.innerHTML = ''
+  setGrid(getGridSize());
+}
+
+function setGrid(size){
+  grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`
+  grid.style.gridTemplateRows = `repeat(${size}, 1fr)`
+  grid.style.backgroundColor = 'whitesmoke';
+
+  for (let i = 0; i < (size*size); i++) {
+    let div = document.createElement('div');
+    div.classList.add('grid-item');
+    div.addEventListener('mouseover', colorChange);
+    grid.appendChild(div);
+  }
+}
 
 
 /*color*/
@@ -31,9 +61,10 @@ function erase() {
   eraser = true;
 }
 
-blackBtn.addEventListener('click', RainbowToBlak)
-rainbowBtn.addEventListener('click', blackToRainbow)
-eraseBtn.addEventListener('click', erase)
+blackBtn.addEventListener('click', RainbowToBlak);
+rainbowBtn.addEventListener('click', blackToRainbow);
+eraseBtn.addEventListener('click', erase);
+
 
 function getRainbowColor() {
   let letters = '0123456789ABCDEF';
@@ -57,25 +88,15 @@ function colorChange(e){
 }
 
 
-
-
-
-
-function setGrid(size){
-  grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`
-  grid.style.gridTemplateRows = `repeat(${size}, 1fr)`
-
-  for (let i = 0; i < (size*size); i++) {
-    let div = document.createElement('div');
-    div.classList.add('grid-item');
-    div.addEventListener('mouseover', colorChange);
-    grid.appendChild(div);
-  }
+/*reset*/
+resetBtn.addEventListener('click',resetGrid)
+function resetGrid() {
+  grid.innerHTML = ''
+  setGrid(getGridSize())
 }
 
 
 
-eraseBtn.addEventListener('click', erase)
 
 window.onload = () => {
   setGrid(defaultSize)
