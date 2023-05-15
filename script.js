@@ -1,18 +1,64 @@
 const div = document.createElement('div');
 const grid = document.getElementById('grid');
+const blackBtn = document.getElementById('blackBtn');
+const rainbowBtn = document.getElementById('rainbowBtn');
+const eraseBtn = document.getElementById('eraseBtn');
 const defaultSize = 16;
-let currentSize = 0;
+const resetBtn = document.getElementById('resetBtn');
 
+let currentSize = 0;
+let blackColor = true;
+let rainbow = false;
+let eraser = false;
+
+
+/*color*/
+function blackToRainbow() {
+    blackColor = false;
+    rainbow = true;
+    eraser = false;
+}
+
+function RainbowToBlak() {
+    blackColor = true;
+    rainbow = false;
+    eraser = false;
+}
+
+function erase() {
+  blackColor = false;
+  rainbow = false;
+  eraser = true;
+}
+
+blackBtn.addEventListener('click', RainbowToBlak)
+rainbowBtn.addEventListener('click', blackToRainbow)
+eraseBtn.addEventListener('click', erase)
+
+function getRainbowColor() {
+  let letters = '0123456789ABCDEF';
+  let color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
 
 function colorChange(e){
-  if (e.type === 'mouseover'){
+  if (e.type === 'mouseover' && blackColor === true) {
     e.target.style.backgroundColor = 'black';
+  }
+  if (e.type === 'mouseover' && rainbow === true){
+    e.target.style.backgroundColor = getRainbowColor();
+  }
+  if (e.type === 'mouseover' && eraser === true) {
+    e.target.style.backgroundColor = 'whitesmoke';
   }
 }
 
-function setNewsize(newSize) {
-  currentSize = newSize
-}
+
+
+
 
 
 function setGrid(size){
@@ -23,10 +69,13 @@ function setGrid(size){
     let div = document.createElement('div');
     div.classList.add('grid-item');
     div.addEventListener('mouseover', colorChange);
-    div.addEventListener('mousedown', colorChange);
     grid.appendChild(div);
   }
 }
+
+
+
+eraseBtn.addEventListener('click', erase)
 
 window.onload = () => {
   setGrid(defaultSize)
