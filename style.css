@@ -1,0 +1,14 @@
+.grid{
+  display: flex;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  width: 400px;
+  height: 400px;
+}
+
+
+.grid-item{
+  outline: solid 0.2px;
+  width: 25px;
+  height: 25px;
+}
