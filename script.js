@@ -13,18 +13,16 @@ let blackColor = true;
 let rainbow = false;
 let eraser = false;
 
-
-
 /*size*/
 sizeSlide.addEventListener('change', changeGrid);
+
 function getGridSize(){
-  let sizeSlide = document.getElementById('myRange')
-  let currentSize = sizeSlide.value;
-  return currentSize;
+  sizeSlide = document.getElementById('myRange');
+  return sizeSlide.value;
 }
 
 function changeGrid() {
-  grid.innerHTML = ''
+  grid.innerHTML = '';
   setGrid(getGridSize());
 }
 
@@ -40,7 +38,6 @@ function setGrid(size){
     grid.appendChild(div);
   }
 }
-
 
 /*color*/
 function blackToRainbow() {
@@ -65,7 +62,6 @@ blackBtn.addEventListener('click', RainbowToBlak);
 rainbowBtn.addEventListener('click', blackToRainbow);
 eraseBtn.addEventListener('click', erase);
 
-
 function getRainbowColor() {
   let letters = '0123456789ABCDEF';
   let color = '#';
@@ -87,16 +83,12 @@ function colorChange(e){
   }
 }
 
-
 /*reset*/
 resetBtn.addEventListener('click',resetGrid)
 function resetGrid() {
   grid.innerHTML = ''
   setGrid(getGridSize())
 }
-
-
-
 
 window.onload = () => {
   setGrid(defaultSize)
