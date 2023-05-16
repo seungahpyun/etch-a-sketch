@@ -1,11 +1,6 @@
-.grid{
-  display: flex;
-  flex-grow: 1;
-  flex-wrap: wrap;
-}
 
 body{
-  background-color: yellow;
+  background-color: rebeccapurple;
 }
 
 .grid {

@@ -84,7 +84,11 @@ function colorChange(e){
 }
 
 /*reset*/
-resetBtn.addEventListener('click',changeGrid)
+resetBtn.addEventListener('click',reset)
+function reset() {
+  toBlack()
+  changeGrid()
+}
 
 window.onload = () => {
   setGrid(defaultSize)
