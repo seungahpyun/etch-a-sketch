@@ -3,6 +3,7 @@ const grid = document.getElementById('grid');
 const gridItem = document.getElementsByClassName('grid-item');
 
 let sizeSlide = document.getElementById('myRange');
+let sizeValue = document.getElementById('demo')
 const blackBtn = document.getElementById('blackBtn');
 const rainbowBtn = document.getElementById('rainbowBtn');
 const eraseBtn = document.getElementById('eraseBtn');
@@ -12,6 +13,12 @@ const resetBtn = document.getElementById('resetBtn');
 let blackColor = true;
 let rainbow = false;
 let eraser = false;
+
+/*display size*/
+sizeValue.innerHTML = sizeSlide.value;
+sizeSlide.oninput = function() {
+  sizeValue.innerHTML = this.value;
+}
 
 /*size*/
 sizeSlide.addEventListener('change', changeGrid);
