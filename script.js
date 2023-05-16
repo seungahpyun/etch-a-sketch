@@ -40,13 +40,13 @@ function setGrid(size){
 }
 
 /*color*/
-function blackToRainbow() {
+function toRainbow() {
     blackColor = false;
     rainbow = true;
     eraser = false;
 }
 
-function RainbowToBlak() {
+function toBlack() {
     blackColor = true;
     rainbow = false;
     eraser = false;
@@ -58,8 +58,8 @@ function erase() {
   eraser = true;
 }
 
-blackBtn.addEventListener('click', RainbowToBlak);
-rainbowBtn.addEventListener('click', blackToRainbow);
+blackBtn.addEventListener('click', toBlack);
+rainbowBtn.addEventListener('click', toRainbow);
 eraseBtn.addEventListener('click', erase);
 
 function getRainbowColor() {
@@ -84,11 +84,7 @@ function colorChange(e){
 }
 
 /*reset*/
-resetBtn.addEventListener('click',resetGrid)
-function resetGrid() {
-  grid.innerHTML = ''
-  setGrid(getGridSize())
-}
+resetBtn.addEventListener('click',changeGrid)
 
 window.onload = () => {
   setGrid(defaultSize)
