@@ -29,7 +29,7 @@ function changeGrid() {
 function setGrid(size){
   grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`
   grid.style.gridTemplateRows = `repeat(${size}, 1fr)`
-  grid.style.backgroundColor = 'whitesmoke';
+  grid.style.backgroundColor = '#e0e1dd';
 
   for (let i = 0; i < (size*size); i++) {
     let div = document.createElement('div');
@@ -79,7 +79,7 @@ function colorChange(e){
     e.target.style.backgroundColor = getRainbowColor();
   }
   if (e.type === 'mouseover' && eraser === true) {
-    e.target.style.backgroundColor = 'whitesmoke';
+    e.target.style.backgroundColor = '#e0e1dd';
   }
 }
 

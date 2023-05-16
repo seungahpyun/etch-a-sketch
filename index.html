@@ -3,19 +3,22 @@
   <head>
       <meta charset="UTF-8">
       <title>Etch-a-Sketch</title>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
       <link href="style.css" rel="stylesheet">
   </head>
   <body>
     <header class="header">Etch-a-Sketch</header>
     <main>
       <div class ="settings">
-        <div class ="setBtn" id="sizeSlider">
-          <input type="range" min="1" max="100" value="16" class="slider" id="myRange">
-        </div>
         <button class ="setBtn" id="blackBtn">Black</button>
         <button class ="setBtn" id="rainbowBtn">Rainbow</button>
         <button class ="setBtn" id="eraseBtn">Eraser</button>
         <button class ="setBtn" id="resetBtn">Reset</button>
+        <div class ="size-slider" id="sizeSlider">
+          <input type="range" min="1" max="100" value="16" class="slider" id="myRange">
+        </div>
       </div>
       <div class="grid" id="grid"></div>
     </main>
